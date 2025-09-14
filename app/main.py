@@ -6,7 +6,7 @@ from app import crud, models, scheduler
 
 Base.metadata.create_all(bind=engine)
 
-# 👇 כאן נגדיר מחלקה שתייצג "task" בבקשה
+
 class TaskCreate(BaseModel):
     title: str
     description: str | None = None
@@ -33,7 +33,7 @@ def root():
 def read_tasks(db: Session = Depends(get_db)):
     return crud.get_tasks(db)
 
-# 👇 כאן FastAPI מבין ש-task זה JSON מהמשתמש לפי TaskCreate
+
 @app.post("/tasks/create")
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
     return crud.create_task(db, task.title, task.description)

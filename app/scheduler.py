@@ -1,9 +1,11 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from crud import check_deadlines
-from database import SessionLocal
+import datetime
 
-sched = BackgroundScheduler()
+scheduler = BackgroundScheduler()
+
+def print_heartbeat():
+    print("Scheduler is alive:", datetime.datetime.now())
 
 def start_scheduler():
-    sched.add_job(lambda: check_deadlines(next(iter(SessionLocal()))), 'interval', minutes=1)
-    sched.start()
+    scheduler.add_job(print_heartbeat, "interval", seconds=10)
+    scheduler.start()

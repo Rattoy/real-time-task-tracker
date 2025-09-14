@@ -1,35 +1,27 @@
 from sqlalchemy.orm import Session
-from models import Task
-import datetime
+from app import models
 
 def get_tasks(db: Session):
-    return db.query(Task).all()
+    return db.query(models.Task).all()
 
-def create_task(db: Session, task):
-    db_task = Task(title=task.title, description=task.description, deadline=task.deadline)
-    db.add(db_task)
+def create_task(db: Session, title: str, description: str = None):
+    task = models.Task(title=title, description=description)
+    db.add(task)
     db.commit()
-    db.refresh(db_task)
-    return db_task
+    db.refresh(task)
+    return task
 
-def update_task(db: Session, task_id: int, done: bool):
-    task = db.query(Task).filter(Task.id == task_id).first()
+def complete_task(db: Session, task_id: int):
+    task = db.query(models.Task).filter(models.Task.id == task_id).first()
     if task:
-        task.done = done
+        task.done = True
         db.commit()
         db.refresh(task)
     return task
-
 def delete_task(db: Session, task_id: int):
-    task = db.query(Task).filter(Task.id == task_id).first()
+    task = db.query(models.Task).filter(models.Task.id == task_id).first()
     if task:
+        task.description = "Deleted"
         db.delete(task)
         db.commit()
     return task
-
-def check_deadlines(db: Session):
-    now = datetime.datetime.utcnow()
-    tasks = db.query(Task).filter(Task.done==False).all()
-    for task in tasks:
-        if task.deadline <= now:
-            print(f"⚠ Task {task.title} is overdue!")

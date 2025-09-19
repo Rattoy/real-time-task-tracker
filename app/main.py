@@ -38,6 +38,10 @@ def read_tasks(db: Session = Depends(get_db)):
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
     return crud.create_task(db, task.title, task.description)
 
+@app.post("/tasks/{task_id}/update")
+def update_task(task_id: int, task: TaskCreate, db: Session = Depends(get_db)):
+    return crud.update_task(db, task_id, task.title, task.description)
+
 @app.put("/tasks/{task_id}/complete")
 def complete_task(task_id: int, db: Session = Depends(get_db)):
     return crud.complete_task(db, task_id)
@@ -45,3 +49,5 @@ def complete_task(task_id: int, db: Session = Depends(get_db)):
 @app.delete("/tasks/{task_id}/delete")
 def delete_task(task_id: int, db: Session = Depends(get_db)):
     return crud.delete_task(db, task_id)
+
+

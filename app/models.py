@@ -8,4 +8,4 @@ class Task(Base):
     title = Column(String, index=True)
     description = Column(String, nullable=True)  
     done = Column(Boolean, default=False)
-    DateCreated = Column(DateTime, default=datetime.datetime.utcnow)
+    date_created = Column(DateTime, default=datetime.datetime.utcnow)

@@ -13,6 +13,7 @@ A task management REST API built with FastAPI and SQLAlchemy.
 - User models and DB relationships
 - Modular structure: models, schemas, CRUD, API routes
 - Alembic migrations for schema management
+- Schedular for background jobs
 
 ### Run locally
 git clone ...

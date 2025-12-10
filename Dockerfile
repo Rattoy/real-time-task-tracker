@@ -10,11 +10,14 @@ COPY requirements.txt .
 # Install the required Python packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
+# Copy the application code (app folder, tests, etc.)
 COPY . .
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Run the Python application
-CMD ["python", "main.py"]
+# Expose port 8000 
+EXPOSE 8000
+
+# Run the application using Uvicorn
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

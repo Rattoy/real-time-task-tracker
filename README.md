@@ -18,8 +18,8 @@ A task management REST API built with FastAPI and SQLAlchemy.
 ### Run locally
 - git clone https://github.com/Rattoy/real-time-task-tracker.git
 - cd real-time-task-tracker //getting inside the folder.
-- python -m venv venv //configures the VM.
-- .\venv\Scripts\activate //enables the VM.
+- python -m venv venv //configures the virtual server.
+- .\venv\Scripts\activate //enables the virtual server.
 - pip install -r requirements.txt //installing the libraries.
 - uvicorn app.main:app --reload //starting the server.
 

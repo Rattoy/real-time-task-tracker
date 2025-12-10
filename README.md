@@ -16,8 +16,9 @@ A task management REST API built with FastAPI and SQLAlchemy.
 - Schedular for background jobs
 
 ### Run locally
-git clone ...
-cd task-tracker
-pip install -r requirements.txt
-alembic upgrade head
-uvicorn app.main:app --reload
+git clone https://github.com/Rattoy/real-time-task-tracker.git
+cd real-time-task-tracker //getting inside the folder.
+python -m venv venv //configures the VM.
+.\venv\Scripts\activate //enables the VM.
+pip install -r requirements.txt //installing the libraries.
+uvicorn app.main:app --reload //starting the server.

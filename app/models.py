@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from app.database import Base
 import datetime
@@ -9,3 +10,7 @@ class Task(Base):
     description = Column(String, nullable=True)  
     done = Column(Boolean, default=False)
     date_created = Column(DateTime, default=datetime.datetime.utcnow)
+
+class TaskCreate(BaseModel): # Pydantic model for task creation and update
+    title: str
+    description: str | None = None

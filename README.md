@@ -17,11 +17,14 @@ A task management REST API built with FastAPI and SQLAlchemy.
 
 ### OPTION 1: Run locally
 - git clone https://github.com/Rattoy/real-time-task-tracker.git
-- cd real-time-task-tracker //getting inside the folder.
-- python -m venv venv //configures the virtual server.
-- .\venv\Scripts\activate //enables the virtual server.
-- pip install -r requirements.txt //installing the libraries.
-- uvicorn app.main:app --reload //starting the server.
+- cd real-time-task-tracker 
+- python -m venv venv
+  For Windows:
+- .\venv\Scripts\activate
+  For Linux:
+- source venv/bin/activate
+- pip install -r requirements.txt 
+- uvicorn app.main:app --reload 
   
 ### OPTION 2: Run With Docker
 - git clone https://github.com/Rattoy/real-time-task-tracker.git
@@ -34,3 +37,4 @@ Once the server is running, you can access the API documentation to test the end
 - Swagger UI (Interactive): http://127.0.0.1:8000/docs
 - ReDoc: http://127.0.0.1:8000/redoc
 - Raw JSON Output: http://127.0.0.1:8000
+- Run GUI: http://127.0.0.1:8000/static/GUI.html
